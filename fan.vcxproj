@@ -75,6 +75,7 @@
     <ProjectCapability Include="VisualMicro" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
     <None Include="fan.ino">
       <FileType>CppCode</FileType>
     </None>

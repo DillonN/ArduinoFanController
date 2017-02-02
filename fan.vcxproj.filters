@@ -15,7 +15,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="$safeprojectname$.ino" />
+    <None Include="fan.ino" />
+    <None Include=".gitignore" />
   </ItemGroup>
- 
+  <ItemGroup>
+    <ClCompile Include="LEDHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LEDHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="__vm\.fan.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
