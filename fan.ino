@@ -17,42 +17,23 @@ LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
 #include <math.h>
 
-#define ThermistorPIN 0                 // Analog Pin 0
+#define T_PIN 0                 // Analog Pin 0
 
-float vcc = 4.91;                       // only used for display purposes, if used
-										// set to the measured Vcc.
-float pad = 9880;                       // balance/pad resistor value, set this to
-										// the measured resistance of your pad resistor
-float thermr = 10000;                   // thermistor nominal resistance
+double A = 3.354016 * pow(10, -3); // A = 3.354016 * 10^-3
+double B = 2.884193 * pow(10, -4);
+double C = 4.118032 * pow(10, -6);
+double D = 1.786790 * pow(10, -7);
 
-float Thermistor(int RawADC) {
-	long Resistance;
-	float Temp;  // Dual-Purpose variable to save space.
-
-	Resistance = pad*((1024.0 / RawADC) - 1);
-	Temp = log(Resistance); // Saving the Log(resistance) so not to calculate  it 4 times later
-	Temp = 1 / (0.001129148 + (0.000234125 * Temp) + (0.0000000876741 * Temp * Temp * Temp));
-	Temp = Temp - 273.15;  // Convert Kelvin to Celsius                      
-
-						   // BEGIN- Remove these lines for the function not to display anything
-						   //Serial.print("ADC: "); 
-						   //Serial.print(RawADC); 
-						   //Serial.print("/1024");                           // Print out RAW ADC Number
-						   //Serial.print(", vcc: ");
-						   //Serial.print(vcc,2);
-						   //Serial.print(", pad: ");
-						   //Serial.print(pad/1000,3);
-						   //Serial.print(" Kohms, Volts: "); 
-						   //Serial.print(((RawADC*vcc)/1024.0),3);   
-						   //Serial.print(", Resistance: "); 
-						   //Serial.print(Resistance);
-						   //Serial.print(" ohms, ");
-						   // END- Remove these lines for the function not to display anything
-
-						   // Uncomment this line for the function to return Fahrenheit instead.
-						   //temp = (Temp * 9.0)/ 5.0 + 32.0;                  // Convert to Fahrenheit
-	return Temp;                                      // Return the Temperature
+double Thermistor(double aIn) // Function to calculate temp from analog pin input
+{
+	int R_ref = 5520; // Resistance of reference resistor in Ohms
+	double R = R_ref * (1024 / aIn - 1); // Conversion to get resistance of thermistor. 1024/aIn = V_in/V_out
+	double ln = log(R / 10000); // Calculate log now instead of three times later
+	double T = 1 / (A + (B * ln) + (C * pow(ln, 2)) + (D * pow(ln, 3))); // Formula for T in lab manual
+	T -= 273.15; // Convert to *C
+	return T;
 }
+
 
 void setup()
 {

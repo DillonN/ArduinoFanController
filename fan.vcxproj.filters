@@ -27,7 +27,7 @@
     <ClInclude Include="LEDHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="__vm\.fan.vsarduino.h">
+    <ClInclude Include="__vm\.FanController.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
