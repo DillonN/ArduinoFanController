@@ -79,6 +79,7 @@
     <None Include="fan.ino">
       <FileType>CppCode</FileType>
     </None>
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LEDHandler.h" />

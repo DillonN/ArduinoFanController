@@ -17,6 +17,9 @@
   <ItemGroup>
     <None Include="fan.ino" />
     <None Include=".gitignore" />
+    <None Include="README.md">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LEDHandler.cpp">
