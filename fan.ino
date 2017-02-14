@@ -6,6 +6,7 @@
 
 #define T_PIN_L A0 // Thermistor input (analog)
 #define T_PIN_R A1
+#define BUTTON 2 // Control button
 #define P_PIN_L 5 // PWM control pin
 #define P_PIN_R 6
 #define TACH_PIN_L 3 // Tachometer input
@@ -30,6 +31,8 @@ unsigned long time2 = 0;
 unsigned long time3 = 0;
 int i = 0;
 
+bool leftFanOn = false; // Control for left fan
+
 double Thermistor(double aIn) // Function to calculate temp from analog pin input
 {
 	int R_ref = 10000; // Resistance of reference resistor in Ohms
@@ -46,14 +49,15 @@ void setup()
 	Serial.begin(9600);
 
 	pinMode(LED_BUILTIN, OUTPUT);
-	pinMode(TACH_PIN_L, INPUT);
+	pinMode(TACH_PIN_L, INPUT_PULLUP);
 	pinMode(C_PIN_L, OUTPUT);
-	digitalWrite(C_PIN_L, HIGH);
-	digitalWrite(TACH_PIN_L, HIGH);
+	pinMode(BUTTON, INPUT_PULLUP);
 	digitalWrite(LED_BUILTIN, LOW);
 
 	analogWrite(P_PIN_L, 200); // Placeholder duty for PWM 
 	analogWrite(P_PIN_R, 128); // Placeholder duty for PWM
+
+	attachInterrupt(digitalPinToInterrupt(BUTTON), buttonPressed, FALLING);
 
 	/*lcd.begin(16, 2);
 	// LCD     ||||||||||||||||
@@ -88,6 +92,9 @@ void loop()
 
 		i = 0;
 	}
+
+	digitalWrite(C_PIN_L, leftFanOn);
+	analogWrite(P_PIN_L, 128); // Placeholder duty for PWM 
 	
 	// Logic to keep a constant loop time
 	if (millis() - time2 <= DELAY) {
@@ -101,4 +108,11 @@ void loop()
 		}
 	}
 	time2 = millis();
+}
+
+void buttonPressed()
+{
+	Serial.println("Button pressed!");
+
+	leftFanOn = !leftFanOn;
 }
