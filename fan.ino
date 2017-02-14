@@ -17,12 +17,12 @@
 #define SIZE 10 // Number of elements before averaged and displayed
 #define DELAY 100 // Delay in milliseconds the loop should run at
 
-//LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+#define A 3.354016 * pow(10, -3) // A = 3.354016 * 10^-3
+#define B 2.884193 * pow(10, -4)
+#define C 4.118032 * pow(10, -6)
+#define D 1.786790 * pow(10, -7)
 
-double A = 3.354016 * pow(10, -3); // A = 3.354016 * 10^-3
-double B = 2.884193 * pow(10, -4);
-double C = 4.118032 * pow(10, -6);
-double D = 1.786790 * pow(10, -7);
+//LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
 float temps[SIZE] = {};
 float rpms[SIZE] = {};
