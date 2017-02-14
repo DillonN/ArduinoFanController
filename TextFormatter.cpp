@@ -1,8 +1,25 @@
-// 
-// 
-// 
+// TextFormatter.h
 
-#include "TextFormatter.h"
+#ifndef _TEXTFORMATTER_h
+#define _TEXTFORMATTER_h
+
+/**
+Takes a number x that has max n digits and right justifies it for LCD
+*/
+extern String rightJust(int x, int n);
+
+/**
+Returns formatted string for fan rotation
+*/
+extern String rpmS(float rpm);
+
+extern String tempS(float temp);
+
+extern String dutyS(float duty);
+
+extern String lcdData(char side, float rpm, float temp, float duty);
+
+#endif
 
 String rightJust(int x, int n)
 {
@@ -27,7 +44,7 @@ String dutyS(float duty)
 	return rightJust(int(duty), 3) + "%";
 }
 
-String lcdData(String side, float rpm, float temp, float duty)
+String lcdData(char side, float rpm, float temp, float duty)
 {
 	return side + ":" + rpmS(rpm) + " " + tempS(temp) + " " + dutyS(duty);
 }

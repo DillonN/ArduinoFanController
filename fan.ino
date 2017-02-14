@@ -1,7 +1,7 @@
-#include "Cabinet.h"
-#include "TextFormatter.h"
+#include "Cabinet.cpp"
+#include "TextFormatter.cpp"
 #include <LiquidCrystal.h>
-#include "LEDHandler.h"
+#include "LEDHandler.cpp"
 #include <avr/pgmspace.h>
 #include <math.h>
 
