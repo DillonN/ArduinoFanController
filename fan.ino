@@ -26,6 +26,9 @@
 
 //LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
+Cabinet left(1, 3, 4, 5, 3);
+Cabinet right(1, 2, 3, 4, 5);
+
 float temps[SIZE] = {};
 float rpms[SIZE] = {};
 unsigned long time = 0;

@@ -15,6 +15,8 @@ protected:
 
 
 public:
+	Cabinet(int fanPin, int tempPin, int conPin, int tachPin, char side);
+
 	void init(int fanPin, int tempPin, int conPin, int tachPin, char side);
 
 	int speed {
@@ -41,6 +43,11 @@ private:
 
 #endif
 
+
+Cabinet::Cabinet(int fanPin, int tempPin, int conPin, int tachPin, char side)
+{
+
+}
 
 void Cabinet::init(int fanPin, int tempPin, int conPin, int tachPin, char side)
 {
