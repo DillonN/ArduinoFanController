@@ -17,9 +17,15 @@ protected:
 public:
 	void init(int fanPin, int tempPin, int conPin, int tachPin, char side);
 
-	int speed;
-	int temp;
-	int duty;
+	int speed {
+		return this->_speed;
+	};
+	int temp {
+		return this->_temp;
+	};
+	int duty {
+		return this->_duty;
+	};
 
 private:
 	int _fanPin;
@@ -27,6 +33,10 @@ private:
 	int _conPin;
 	int _tachPin;
 	char _side;
+
+	int _speed;
+	int _duty;
+	int _temp;
 };
 
 #endif
@@ -39,6 +49,4 @@ void Cabinet::init(int fanPin, int tempPin, int conPin, int tachPin, char side)
 	_conPin = conPin;
 	_tachPin = tachPin;
 	_side = side;
-
-
 }
