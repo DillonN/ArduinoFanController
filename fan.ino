@@ -1,3 +1,4 @@
+#include "Cabinet.h"
 #include "TextFormatter.h"
 #include <LiquidCrystal.h>
 #include "LEDHandler.h"
