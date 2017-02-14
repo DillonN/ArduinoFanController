@@ -83,7 +83,6 @@
   <ItemGroup>
     <ClInclude Include="LEDHandler.h" />
     <ClInclude Include="__vm\.ArduinoFanController.vsarduino.h" />
-    <ClInclude Include="__vm\.FanController.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LEDHandler.cpp" />
