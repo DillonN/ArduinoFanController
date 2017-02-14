@@ -1,3 +1,4 @@
+#include "TextFormatter.h"
 #include <LiquidCrystal.h>
 #include "LEDHandler.h"
 #include <avr/pgmspace.h>
@@ -52,15 +53,16 @@ void setup()
 	pinMode(TACH_PIN_L, INPUT_PULLUP);
 	pinMode(C_PIN_L, OUTPUT);
 	pinMode(BUTTON, INPUT_PULLUP);
+
 	digitalWrite(LED_BUILTIN, LOW);
 
 	analogWrite(P_PIN_L, 200); // Placeholder duty for PWM 
 	analogWrite(P_PIN_R, 128); // Placeholder duty for PWM
 
-	attachInterrupt(digitalPinToInterrupt(BUTTON), buttonPressed, FALLING);
-
+	attachInterrupt(digitalPinToInterrupt(BUTTON), buttonPressed, FALLING); // Get button presses
+	
 	/*lcd.begin(16, 2);
-	// LCD     ||||||||||||||||
+	// LCD     ||||||||||||||||   <- 16 digits across
 	lcd.print("L:2000R 24C 100%"); // Rotations, temps, duty
 	lcd.setCursor(0, 1);
 	lcd.print("R:    0RPM 20C");*/
@@ -87,8 +89,8 @@ void loop()
 		lcd.setCursor(11, 0);
 		lcd.print(int(sumT / SIZE));*/
 
-		Serial.println(int(sumR / SIZE));
-		Serial.println(int(sumT / SIZE));
+		Serial.println(rightJust(int(sumR / SIZE), 4));
+		Serial.println(rightJust(int(sumT / SIZE), 2));
 
 		i = 0;
 	}
@@ -110,6 +112,7 @@ void loop()
 	time2 = millis();
 }
 
+// Called when button is pressed
 void buttonPressed()
 {
 	Serial.println("Button pressed!");

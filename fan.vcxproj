@@ -82,10 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LEDHandler.h" />
+    <ClInclude Include="TextFormatter.h" />
     <ClInclude Include="__vm\.ArduinoFanController.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LEDHandler.cpp" />
+    <ClCompile Include="TextFormatter.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>

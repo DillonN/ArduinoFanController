@@ -22,12 +22,18 @@
     <ClCompile Include="LEDHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TextFormatter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LEDHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="__vm\.ArduinoFanController.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextFormatter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
