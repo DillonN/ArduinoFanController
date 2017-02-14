@@ -5,11 +5,13 @@
 
 
 #define T_PIN_L A0 // Thermistor input (analog)
-#define T_PIN_R 1
+#define T_PIN_R A1
 #define P_PIN_L 5 // PWM control pin
 #define P_PIN_R 6
-#define TACH_PIN_L 2 // Tachometer input
-#define TACH_PIN_R 10
+#define TACH_PIN_L 3 // Tachometer input
+#define TACH_PIN_R 4
+#define C_PIN_L 7 // Transistor shutoff
+#define C_PIN_R 8 
 
 #define SIZE 10 // Number of elements before averaged and displayed
 #define DELAY 100 // Delay in milliseconds the loop should run at
@@ -45,10 +47,10 @@ void setup()
 
 	pinMode(LED_BUILTIN, OUTPUT);
 	pinMode(TACH_PIN_L, INPUT);
+	pinMode(C_PIN_L, OUTPUT);
+	digitalWrite(C_PIN_L, HIGH);
 	digitalWrite(TACH_PIN_L, HIGH);
 	digitalWrite(LED_BUILTIN, LOW);
-	pinMode(12, OUTPUT);
-	digitalWrite(12, HIGH);
 
 	analogWrite(P_PIN_L, 200); // Placeholder duty for PWM 
 	analogWrite(P_PIN_R, 128); // Placeholder duty for PWM
