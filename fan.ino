@@ -1,7 +1,7 @@
-#include "Cabinet.cpp"
-#include "TextFormatter.cpp"
+#include "Cabinet.h"
+#include "TextFormatter.h"
 #include <LiquidCrystal.h>
-#include "LEDHandler.cpp"
+#include "LEDHandler.h"
 #include <avr/pgmspace.h>
 #include <math.h>
 
@@ -19,6 +19,7 @@
 #define SIZE 10 // Number of elements before averaged and displayed
 #define DELAY 100 // Delay in milliseconds the loop should run at
 
+#define R_ref 10000 // Reference resistor value for temp monitoring
 #define A 3.354016 * pow(10, -3) // A = 3.354016 * 10^-3
 #define B 2.884193 * pow(10, -4)
 #define C 4.118032 * pow(10, -6)
@@ -40,7 +41,6 @@ bool leftFanOn = false; // Control for left fan
 
 double Thermistor(double aIn) // Function to calculate temp from analog pin input
 {
-	int R_ref = 10000; // Resistance of reference resistor in Ohms
 	double R = R_ref * (1024 / aIn - 1); // Conversion to get resistance of thermistor. 1024/aIn = V_in/V_out
 	double ln = log(R / 10000); // Calculate log now instead of three times later
 	double T = 1 / (A + (B * ln) + (C * pow(ln, 2)) + (D * pow(ln, 3))); // Formula for T in lab manual
@@ -93,7 +93,7 @@ void loop()
 		lcd.setCursor(11, 0);
 		lcd.print(int(sumT / SIZE));*/
 
-		Serial.println(rightJust(int(sumR / SIZE), 4));
+		Serial.println(rpmS(sumR / SIZE));
 		Serial.println(rightJust(int(sumT / SIZE), 2));
 
 		i = 0;
@@ -121,5 +121,5 @@ void buttonPressed()
 {
 	Serial.println("Button pressed!");
 
-	leftFanOn = !leftFanOn;
+	//leftFanOn = !leftFanOn;
 }
