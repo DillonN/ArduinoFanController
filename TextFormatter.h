@@ -23,6 +23,6 @@ extern String tempS(float temp);
 
 extern String dutyS(float duty);
 
-extern String lcdData(char side, float rpm, float temp, float duty);
+extern String lcdData(int side, float rpm, float temp, float duty);
 
 #endif

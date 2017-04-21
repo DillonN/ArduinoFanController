@@ -2,10 +2,7 @@
 
 String rightJust(int x, int n)
 {
-	if (x == 0) { 
-		return String("   0");
-	}
-	else if (pow(10, n - 1) > x) {
+	if ((x > 0 && pow(10, n - 1) > x) || (x == 0 && n > 1)) {
 		return " " + rightJust(x, n - 1);
 	}
 	return String(x);
@@ -26,7 +23,8 @@ String dutyS(float duty)
 	return rightJust(int(duty), 3) + "%";
 }
 
-String lcdData(char side, float rpm, float temp, float duty)
+String lcdData(int side, float rpm, float temp, float duty)
 {
-	return side + ":" + rpmS(rpm) + " " + tempS(temp) + " " + dutyS(duty);
+	String sideS = (side == 0) ? "L" : "R";
+	return sideS + ":" + rpmS(rpm) + " " + tempS(temp) + " " + dutyS(duty);
 }
