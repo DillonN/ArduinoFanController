@@ -1,7 +1,6 @@
 #include <LiquidCrystal595.h>
 #include "Cabinet.h"
 #include "TextFormatter.h"
-#include "LEDHandler.h"
 #include <avr/pgmspace.h>
 #include <math.h>
 #include "Enums.h"
