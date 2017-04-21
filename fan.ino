@@ -50,6 +50,8 @@ void setup()
 	pinMode(TACH_PIN_L, INPUT_PULLUP);
 	pinMode(C_PIN_L, OUTPUT);
 	pinMode(BUTTON, INPUT_PULLUP);
+	pinMode(TACH_PIN_R, INPUT);
+	pinMode(C_PIN_R, OUTPUT);
 
 	digitalWrite(LED_BUILTIN, LOW);
 

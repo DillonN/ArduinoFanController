@@ -8,7 +8,7 @@
 #define R_ref 10000 // Reference resistor value for temp monitoring
 
 //Constants for fan line
-#define MIN_TEMP 25
+#define MIN_TEMP 29
 #define MAX_TEMP 40
 #define m 100 / (MAX_TEMP - MIN_TEMP)
 
