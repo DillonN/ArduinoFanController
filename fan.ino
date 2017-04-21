@@ -67,7 +67,7 @@ void setup()
 void loop()
 {
 	left.gatherData(i);
-	//right.gatherData(i);
+	right.gatherData(i);
 	i++;
 
 

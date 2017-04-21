@@ -24,9 +24,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LEDHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TextFormatter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,9 +36,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cabinet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LEDHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TextFormatter.h">
