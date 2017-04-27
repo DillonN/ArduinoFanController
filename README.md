@@ -43,7 +43,7 @@ You will want to set up the electronics next. Obviously wires will be required, 
 
 A quick explanation for the connections (this is the case for 2 fans):
 
-* Wire olours are as follows:
+* Wire colours are as follows:
 
  | Colour    | Purpose |
  | --------- | ------- |

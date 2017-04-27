@@ -9,7 +9,7 @@
  #include "WProgram.h"
  #endif
 #include <LiquidCrystal595.h>
-#include "TextFormatter.h"
+#include "Helpers\TextFormatter.h"
 
 #define SIZE 10  // Number of samples that are gathered before calculations
 

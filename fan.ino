@@ -1,9 +1,9 @@
 #include <LiquidCrystal595.h>
-#include "Cabinet.h"
-#include "TextFormatter.h"
+#include "Cabinet\Cabinet.h"
+#include "Helpers\TextFormatter.h"
 #include <avr/pgmspace.h>
 #include <math.h>
-#include "Enums.h"
+#include "Helpers\Enums.h"
 
 
 #define T_PIN_L A0 // Thermistor input (analog)
@@ -53,7 +53,7 @@ void setup()
 
 void loop()
 {
-	left.gatherData(i);  // Gather raw data and hold on until SIZE loops are held
+	left.gatherData(i);  // Gather raw data and hold on until <SIZE> loops run
 	right.gatherData(i);
 	i++;
 
