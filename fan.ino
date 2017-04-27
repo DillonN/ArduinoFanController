@@ -5,10 +5,9 @@
 #include <math.h>
 #include "Helpers\Enums.h"
 
-
 #define T_PIN_L A0 // Thermistor input (analog)
 #define T_PIN_R A1
-#define BUTTON 2 // Control button
+#define BUTTON_PIN 2 // Control button
 #define P_PIN_L 5 // PWM control pin
 #define P_PIN_R 6
 #define TACH_PIN_L 3 // Tachometer input
@@ -39,12 +38,12 @@ void setup()
 	pinMode(C_PIN_R, OUTPUT);
 
 	pinMode(TACH_PIN_L, INPUT_PULLUP);
-	pinMode(BUTTON, INPUT_PULLUP);
+	pinMode(BUTTON_PIN, INPUT_PULLUP);
 	pinMode(TACH_PIN_R, INPUT_PULLUP);
 
 	digitalWrite(LED_BUILTIN, LOW);  // Turn off built in LED
 
-	attachInterrupt(digitalPinToInterrupt(BUTTON), buttonPressed, FALLING); // Get button presses
+	attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), buttonPressed, FALLING); // Get button presses
 	
 	lcd.begin(16, 2);  // Activate LCD and start with backlight off
 	lcd.setLED2Pin(LOW);
@@ -56,7 +55,6 @@ void loop()
 	left.gatherData(i);  // Gather raw data and hold on until <SIZE> loops run
 	right.gatherData(i);
 	i++;
-
 
 	if (i >= SIZE) {
 		left.update(lcd, mode);  // Update cabinets with gathered info
