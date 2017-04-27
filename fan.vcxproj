@@ -82,14 +82,17 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cabinet.h" />
-    <ClInclude Include="Enums.h" />
-    <ClInclude Include="TextFormatter.h" />
+    <ClInclude Include="Cabinet\Cabinet.h" />
+    <ClInclude Include="Helpers\Enums.h" />
+    <ClInclude Include="Helpers\TextFormatter.h" />
     <ClInclude Include="__vm\.ArduinoFanController.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Cabinet.cpp" />
-    <ClCompile Include="TextFormatter.cpp" />
+    <Image Include="layout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Cabinet\Cabinet.cpp" />
+    <ClCompile Include="Helpers\TextFormatter.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>

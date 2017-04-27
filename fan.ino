@@ -19,95 +19,77 @@
 #define LCD_PIN_2 10
 #define LCD_PIN_3 11
 
-#define SIZE 10 // Number of elements before averaged and displayed
-#define DELAY 100 // Delay in milliseconds the loop should run at
+#define DELAY 100 // Delay in milliseconds the loop should run at, loop will be at least this long and give warning if longer
 
 LiquidCrystal595 lcd(LCD_PIN_1, LCD_PIN_2, LCD_PIN_3);
 
 Cabinet left(C_PIN_L, T_PIN_L, P_PIN_L, TACH_PIN_L, Left);
 Cabinet right(C_PIN_R, T_PIN_R, P_PIN_R, TACH_PIN_R, Right);
 
-float temps_l[SIZE] = {};
-float rpms_l[SIZE] = {};
-float temps_r[SIZE] = {};
-float rpms_r[SIZE] = {};
 unsigned long time = 0;
-unsigned long time2 = 0;
-unsigned long time3 = 0;
 int i = 0;
-char duty_l = 0;
-char duty_r = 0;
 int mode = Auto;
-
-bool leftFanOn = false; // Control for left fan
-
 
 void setup()
 {
 	Serial.begin(9600);
 
 	pinMode(LED_BUILTIN, OUTPUT);
-	pinMode(TACH_PIN_L, INPUT_PULLUP);
 	pinMode(C_PIN_L, OUTPUT);
-	pinMode(BUTTON, INPUT_PULLUP);
-	pinMode(TACH_PIN_R, INPUT_PULLUP);
 	pinMode(C_PIN_R, OUTPUT);
 
-	digitalWrite(LED_BUILTIN, LOW);
+	pinMode(TACH_PIN_L, INPUT_PULLUP);
+	pinMode(BUTTON, INPUT_PULLUP);
+	pinMode(TACH_PIN_R, INPUT_PULLUP);
 
-	analogWrite(P_PIN_L, 200); // Placeholder duty for PWM 
-	analogWrite(P_PIN_R, 128); // Placeholder duty for PWM
+	digitalWrite(LED_BUILTIN, LOW);  // Turn off built in LED
 
 	attachInterrupt(digitalPinToInterrupt(BUTTON), buttonPressed, FALLING); // Get button presses
 	
-	lcd.begin(16, 2);
+	lcd.begin(16, 2);  // Activate LCD and start with backlight off
 	lcd.setLED2Pin(LOW);
 }
 
 
 void loop()
 {
-	left.gatherData(i);
+	left.gatherData(i);  // Gather raw data and hold on until SIZE loops are held
 	right.gatherData(i);
 	i++;
 
 
 	if (i >= SIZE) {
-		left.calculateData();
-		right.calculateData();
-		left.postData(lcd);
-		right.postData(lcd);
-		left.updatePins(mode);
-		right.updatePins(mode);
+		left.update(lcd, mode);  // Update cabinets with gathered info
+		right.update(lcd, mode);
 
 		if (left.on() || right.on()) {
-			lcd.setLED2Pin(HIGH);
+			lcd.setLED2Pin(HIGH);  // Turn on LCD backlight
 		}
 		else {
-			lcd.setLED2Pin(LOW);
+			lcd.setLED2Pin(LOW);  // Turn off LCD backlight
 		}
 
 		i = 0;
 	}
 	
 	// Logic to keep a constant loop time
-	if (millis() - time2 <= DELAY) {
-		delay(DELAY - millis() + time2);
+	if (millis() - time <= DELAY) {
+		delay(DELAY - millis() + time);
 	}
 	// Warning that delay is unattainable
 	else {
 		if (i > 0) { // Allow long loops when calculations are done
-			Serial.print(millis() - time2 - DELAY);
+			Serial.print(millis() - time - DELAY);
 			Serial.println(" Too slow!");
 		}
 	}
-	time2 = millis();
+	time = millis();
 }
 
 // Called when button is pressed
 void buttonPressed()
 {
-	mode = (mode > 1) ? 0 : mode + 1;
+	mode = (mode > 1) ? 0 : mode + 1;  // Cycle through modes 0,1,2
 	Serial.print("Mode switched to ");
 	Serial.println(mode);
 }

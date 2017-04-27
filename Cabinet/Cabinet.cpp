@@ -23,12 +23,13 @@ Cabinet::Cabinet(int fanPin, int tempPin, int conPin, int tachPin, char side)
 
 void Cabinet::gatherData(int i)
 {
-	_rpms[i] = pulseIn(_tachPin, LOW, 95000);
-	_temps[i] = thermistor(analogRead(_tempPin));
+	_rpms[i] = pulseIn(_tachPin, LOW, 95000);  // Gets pulses in amount per microsecond
+	_temps[i] = analogRead(_tempPin);  // Reads analog voltage from 0 to 5V on a scale of 0 to 1023
 }
 
 void Cabinet::calculateData()
 {
+	//Average gathered data
 	float tempSum = 0;
 	float rpmSum = 0;
 	for (int j = 0; j < SIZE; j++) {
@@ -37,10 +38,10 @@ void Cabinet::calculateData()
 	}
 
 	_rpm = rpmSum / SIZE;
-	_temp = tempSum / SIZE;
+	_temp = thermistor(tempSum / SIZE);
 
-	_duty = m * (_temp - MIN_TEMP);
-	_duty = min(100, max(0, _duty));
+	_duty = m * (_temp - MIN_TEMP);  // Linear function to obtain PWM duty
+	_duty = min(100, max(0, _duty));  // Constrain between 0 and 100%
 
 	if (_duty <= 0) {
 		_on = false;
@@ -60,18 +61,25 @@ void Cabinet::postData(LiquidCrystal595 lcd)
 
 void Cabinet::updatePins(int mode)
 {
-	if (mode == 0) {
+	if (mode == Auto) {
 		analogWrite(_conPin, 255 * _duty / 100);
 	}
-	else if (mode == 1) {
+	else if (mode == Off) {
 		analogWrite(_conPin, 0);
 		_on = false;
 	}
-	else {
+	else {  // mode == Max
 		analogWrite(_conPin, 255);
 		_on = true;
 	}
 	digitalWrite(_fanPin, _on);
+}
+
+void Cabinet::update(LiquidCrystal595 lcd, int mode)
+{
+	calculateData();
+	postData(lcd);
+	updatePins(mode);
 }
 
 double Cabinet::thermistor(double aIn) // Function to calculate temp from analog pin input

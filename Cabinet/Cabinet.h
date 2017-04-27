@@ -11,30 +11,43 @@
 #include <LiquidCrystal595.h>
 #include "TextFormatter.h"
 
-#define SIZE 10
+#define SIZE 10  // Number of samples that are gathered before calculations
 
+/**
+Represents a thermistor/fan combo. It is responsible for collecting data and controlling the fans, as well as outputting the data.
+**/
 class Cabinet
 {
 protected:
 
 
 public:
+	/**
+	Initializer
+	*/
 	Cabinet(int fanPin, int tempPin, int conPin, int tachPin, char side);
 
+	/**
+	Gather data from thermistor and fan pins
+	*/
 	void gatherData(int i);
+	/**
+	Calculate RPMs and temp from raw data, and fan speed
+	*/
 	void calculateData();
+	/**
+	Write data to LCD
+	*/
 	void postData(LiquidCrystal595 lcd);
+	/**
+	Update control pins based on most recent data
+	*/
 	void updatePins(int mode);
+	/**
+	Complete collection of data and updating
+	*/
+	void update(LiquidCrystal595 lcd, int mode);
 
-	int rpm() {
-		return this->_rpm;
-	}
-	int temp() {
-		return this->_temp;
-	};
-	int duty() {
-		return this->_duty;
-	};
 	bool on() {
 		return this->_on;
 	}
@@ -47,7 +60,7 @@ private:
 	char _side;
 	bool _on;
 
-	float _rpms[SIZE];
+	float _rpms[SIZE] = {};
 	float _temps[SIZE] = {};
 	float _rpm = 0;
 	float _temp = 0;

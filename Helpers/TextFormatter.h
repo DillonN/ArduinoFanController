@@ -19,10 +19,19 @@ Returns formatted string for fan rotation
 */
 extern String rpmS(float rpm);
 
+/**
+Returns formatted string for temperature
+*/
 extern String tempS(float temp);
 
+/**
+Returns formatted string for PWM duty
+*/
 extern String dutyS(float duty);
 
+/**
+Returns formatted string for LCD
+*/
 extern String lcdData(int side, float rpm, float temp, float duty);
 
 #endif
