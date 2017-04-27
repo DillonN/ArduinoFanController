@@ -1,3 +1,11 @@
+//
+//   Cabinet.h
+//   fan
+//   
+//   Created by Dillon Newell on 27-4-2017
+//   Copyright (c) 2017 Newell Labs. All rights reserved.
+//
+
 // Cabinet.h		
 
 #ifndef _CABINET_h

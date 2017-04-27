@@ -24,6 +24,9 @@
     <None Include=".gitignore">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Resources\ArduinoFanController.licenseheader">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.ArduinoFanController.vsarduino.h">
@@ -40,16 +43,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="layout.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Cabinet\Cabinet.cpp">
       <Filter>Cabinet</Filter>
     </ClCompile>
     <ClCompile Include="Helpers\TextFormatter.cpp">
       <Filter>Helpers</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\layout.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

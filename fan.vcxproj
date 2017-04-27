@@ -80,6 +80,7 @@
       <FileType>CppCode</FileType>
     </None>
     <None Include="README.md" />
+    <None Include="Resources\ArduinoFanController.licenseheader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cabinet\Cabinet.h" />
@@ -88,11 +89,11 @@
     <ClInclude Include="__vm\.ArduinoFanController.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="layout.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Cabinet\Cabinet.cpp" />
     <ClCompile Include="Helpers\TextFormatter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\layout.png" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>

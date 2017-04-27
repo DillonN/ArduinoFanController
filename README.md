@@ -39,7 +39,7 @@ You could also use the official Arduino IDE relatively easily, but I will not pr
 
 You will want to set up the electronics next. Obviously wires will be required, and a prototyping breadboard will make your life a lot easier. Set up like so:
 
-<img src="layout.png" />
+<img src="Resources\layout.png" />
 
 A quick explanation for the connections (this is the case for 2 fans):
 

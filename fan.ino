@@ -1,8 +1,13 @@
+//
+//   fan.ino
+//   fan
+//   
+//   Created by Dillon Newell on 20-4-2017
+//   Copyright (c) 2017 Newell Labs. All rights reserved.
+//
 #include <LiquidCrystal595.h>
 #include "Cabinet\Cabinet.h"
 #include "Helpers\TextFormatter.h"
-#include <avr/pgmspace.h>
-#include <math.h>
 #include "Helpers\Enums.h"
 
 #define T_PIN_L A0 // Thermistor input (analog)
