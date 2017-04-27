@@ -17,8 +17,9 @@
 #define LCD_PIN_1 9 // Pins for LCD shift register control
 #define LCD_PIN_2 10
 #define LCD_PIN_3 11
-
-#define DELAY 150 // Delay in milliseconds the loop should run at, loop will be at least this long and give warning if longer
+//#define SIZE 10 - this is defined in Cabinet.h, number of data points gathered before averaging and calculations
+#define REFRESH 1500  // How long between each calculation/update. This can only be so short before updates become uneven
+#define DELAY REFRESH / SIZE // Delay in milliseconds the loop should run at, loop will be at least this long and give warning if longer
 
 LiquidCrystal595 lcd(LCD_PIN_1, LCD_PIN_2, LCD_PIN_3);
 
@@ -31,7 +32,7 @@ int mode = Auto;
 
 void setup()
 {
-	Serial.begin(19200);
+	Serial.begin(9600);
 
 	pinMode(LED_BUILTIN, OUTPUT);
 	pinMode(C_PIN_L, OUTPUT);
