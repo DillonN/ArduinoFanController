@@ -5,6 +5,7 @@
 //   Created by Dillon Newell on 20-4-2017
 //   Copyright (c) 2017 Newell Labs. All rights reserved.
 //
+
 #include <LiquidCrystal595.h>
 #include "Cabinet\Cabinet.h"
 #include "Helpers\TextFormatter.h"
@@ -81,11 +82,9 @@ void loop()
 		delay(DELAY - millis() + time);
 	}
 	// Warning that delay is unattainable
-	else {
-		if (i > 0) { // Allow long loops when calculations are done
-			Serial.print(millis() - time - DELAY);
-			Serial.println(" Too slow!");
-		}
+	else if (i > 0) { // Allow long loops when calculations are done
+		Serial.print(millis() - time - DELAY);
+		Serial.println(" Too slow!");
 	}
 	time = millis();
 }

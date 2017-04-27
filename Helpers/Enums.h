@@ -5,6 +5,7 @@
 //   Created by Dillon Newell on 27-4-2017
 //   Copyright (c) 2017 Newell Labs. All rights reserved.
 //
+
 #pragma once
 
 // Modes that are switched with the button

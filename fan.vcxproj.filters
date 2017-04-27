@@ -24,9 +24,7 @@
     <None Include=".gitignore">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Resources\ArduinoFanController.licenseheader">
-      <Filter>Resource Files</Filter>
-    </None>
+    <None Include="Resources\ArduinoFanController.licenseheader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.ArduinoFanController.vsarduino.h">

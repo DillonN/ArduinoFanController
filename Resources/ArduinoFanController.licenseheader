@@ -7,6 +7,7 @@ extensions: .cs .cpp .h .ino
 //   Created by Dillon Newell on %CreationDay%-%CreationMonth%-%CreationYear%
 //   Copyright (c) %CurrentYear% Newell Labs. All rights reserved.
 //
+
 extensions: .aspx .ascx
 <%-- 
 Copyright (c) 2011 rubicon IT GmbH

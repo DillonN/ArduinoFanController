@@ -5,6 +5,7 @@
 //   Created by Dillon Newell on 20-4-2017
 //   Copyright (c) 2017 Newell Labs. All rights reserved.
 //
+
 #include "Cabinet.h"
 #include "..\Helpers\Enums.h"
 #include "..\Helpers\TextFormatter.h"
