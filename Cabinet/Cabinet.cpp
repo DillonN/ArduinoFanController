@@ -36,10 +36,10 @@ void Cabinet::calculateData()
 	float rpmSum = 0;
 	for (int j = 0; j < SIZE; j++) {
 		tempSum += _temps[j];
-		rpmSum += (1000000 * 60 / (_rpms[j] * 4));
+		rpmSum += _rpms[j];
 	}
 
-	_rpm = rpmSum / SIZE;
+	_rpm = 1000000 * 60 / (rpmSum * 4 / SIZE);
 	_temp = thermistor(tempSum / SIZE);
 
 	_duty = m * (_temp - MIN_TEMP);  // Linear function to obtain PWM duty

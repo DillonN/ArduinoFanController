@@ -18,7 +18,7 @@
 #define LCD_PIN_2 10
 #define LCD_PIN_3 11
 
-#define DELAY 100 // Delay in milliseconds the loop should run at, loop will be at least this long and give warning if longer
+#define DELAY 150 // Delay in milliseconds the loop should run at, loop will be at least this long and give warning if longer
 
 LiquidCrystal595 lcd(LCD_PIN_1, LCD_PIN_2, LCD_PIN_3);
 
@@ -31,7 +31,7 @@ int mode = Auto;
 
 void setup()
 {
-	Serial.begin(9600);
+	Serial.begin(19200);
 
 	pinMode(LED_BUILTIN, OUTPUT);
 	pinMode(C_PIN_L, OUTPUT);
