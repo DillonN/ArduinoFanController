@@ -1,5 +1,6 @@
 #include "Cabinet.h"
-#include "Helpers\Enums.h"
+#include "..\Helpers\Enums.h"
+#include "..\Helpers\TextFormatter.h"
 
 // Constants for thermistor equation
 #define A 3.354016 * pow(10, -3) // A = 3.354016 * 10^-3
